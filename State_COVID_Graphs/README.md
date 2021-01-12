@@ -1,1 +1,1 @@
-
+Creates graphs for each state with number of negative tests as a percent of population, number of positive tests as a percent of population, positive to negative test ratio, currently in ICU as percent of population, currently hospitalized as percent of population and deaths as percent of population.
