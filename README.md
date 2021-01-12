@@ -1,2 +1,2 @@
 # Visualizations
-Visualizations to highlight aspects of data
+Visualizations to highlight aspects of data.
