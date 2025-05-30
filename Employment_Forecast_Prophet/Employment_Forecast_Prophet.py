@@ -15,11 +15,9 @@ print(df.head())
 
 # Rename columns to match Prophet's expected format
 # Prophet expects: 'ds' for date and 'y' for the value being forecasted
-df.rename(columns={'date': 'ds', 'y': 'y'}, inplace=True)
+df.rename(columns={'date': 'ds', 'PAYEMS': 'y'}, inplace=True)
 
 # Ensure 'ds' column is datetime format
-df['ds'] = pd.to_datetime('1899-12-30') + pd.to_timedelta(df['ds'], unit='D')
-
 df['ds'] = pd.to_datetime(df['ds'])
 
 # Initialize and fit the Prophet model
@@ -32,10 +30,11 @@ future = model.make_future_dataframe(periods=12, freq='M')  # forecast 12 months
 # Make predictions
 forecast = model.predict(future)
 
-# Plot the forecast
+# Plot and save the forecast
 fig = model.plot(forecast)
 plt.title("Employment Forecast")
 plt.xlabel("Date")
 plt.ylabel("Employment")
 plt.grid(True)
+fig.savefig(output_path, dpi=300)
 plt.show()
